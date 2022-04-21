@@ -15,9 +15,9 @@ class Player {
         this.rotation = 0
 
         const image = new Image()
-        image.src = './img/spaceship.png'
+        image.src = './img/playerShip1_blue.png'
         image.onload = () => {
-          const scale = 0.15
+          const scale = 0.40
           this.image = image
           this.width = image.width * scale
           this.height = image.height * scale
@@ -32,6 +32,10 @@ class Player {
        /* c.fillStyle = 'red'
         c.fillRect(this.position.x, this.position.y, this.width, this.height) */
         c.save()
+        c.translate(player.position.x + player.width / 2, player.position.y + player.height / 2)
+
+        c.rotate(this.rotation)
+        c.translate(-player.position.x - player.width / 2, -player.position.y - player.height / 2)
 
         c.drawImage(this.image, this.position.x, this.position.y, this.width, this.height)
         c.restore()
@@ -65,11 +69,14 @@ function animate() {
     player.update()
 
     if (keys.a.pressed && player.position.x >= 1) {
-        player.velocity.x = -5
+        player.velocity.x = -7
+        player.rotation = -0.15
     } else if (keys.d.pressed && player.position.x +player.width <= canvas.width) {
-        player.velocity.x = 5
+        player.velocity.x = 7
+        player.rotation = 0.15
     } else {
         player.velocity.x = 0
+        player.rotation = 0
     }
 }
 
