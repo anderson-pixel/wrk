@@ -54,7 +54,7 @@ class Projectile {
         this.position = position
         this.velocity = velocity
 
-        this.radius = 3
+        this.radius = 4
     }
 
     draw() {
@@ -242,13 +242,11 @@ function animate() {
     grids.forEach((grid, gridIndex) => {
         grid.update()
 
-        // spawn Projectiles 
         if (frames % 100 === 0 && grid.invaders.length > 0) {
             grid.invaders[Math.floor(Math.random() * grid.invaders.length)].shoot(
                 invaderProjectiles
             )
         } 
-
         grid.invaders.forEach((invader, i) => {
             invader.update({velocity: grid.velocity})
             
