@@ -6,7 +6,7 @@ canvas.width = 1024
 canvas.height = 576
 
 class Player {
-    constructor() {
+    constructor(velocity) {
 
         this.velocity = {
             x: 0,
@@ -18,6 +18,10 @@ class Player {
 
         const image = new Image()
         image.src = './img/playerShip1_blue.png'
+
+        document.addEventListener("keydown",this.keydown);
+        document.addEventListener("keyup",this.keyup);
+
         image.onload = () => {
           const scale = 0.40
           this.image = image
@@ -53,9 +57,10 @@ class Player {
 }
 
 class Projectile {
-     constructor({position, velocity}) {
+     constructor({position, velocity, cooldown}) {
         this.position = position
         this.velocity = velocity
+        this.cooldown = cooldown
 
         this.radius = 3
     }
@@ -138,7 +143,7 @@ class Invader {
         const image = new Image()
         image.src = './img/enemyBlack2.png'
         image.onload = () => {
-          const scale = 0.35
+          const scale = 0.30
           this.image = image
           this.width = image.width * scale
           this.height = image.height * scale
@@ -237,6 +242,12 @@ const keys = {
         pressed: false
     },
     d: {
+        pressed: false
+    },
+    l: {
+        pressed: false
+    },
+    r: {
         pressed: false
     },
     space: {
@@ -352,7 +363,7 @@ function animate() {
         grid.update()
 
         // spawn Projectiles 
-        if (frames % 100 === 0 && grid.invaders.length > 0) {
+        if (frames % 80 === 0 && grid.invaders.length > 0) {
             grid.invaders[Math.floor(Math.random() * grid.invaders.length)].shoot(
                 invaderProjectiles
             )
@@ -411,6 +422,12 @@ function animate() {
     } else if (keys.d.pressed && player.position.x +player.width <= canvas.width) {
         player.velocity.x = 7
         player.rotation = 0.15
+    } else if (keys.l.pressed && player.position.x >= 1) {
+        player.velocity.x = -7
+        player.rotation = -0.15
+    } else if (keys.r.pressed && player.position.x +player.width <= canvas.width) {
+        player.velocity.x = 7
+        player.rotation = 0.15
     } else {
         player.velocity.x = 0
         player.rotation = 0
@@ -425,10 +442,10 @@ function animate() {
     frames++
 }
 
+
 animate()
 
 addEventListener('keydown', ({ key }) => {
-    if (game.over) return 
 
    switch (key) {
        case 'a':
@@ -437,18 +454,27 @@ addEventListener('keydown', ({ key }) => {
         case 'd':
         keys.d.pressed = true
         break
+        case 'ArrowLeft':
+        keys.l.pressed = true
+        break
+        case 'ArrowRight':
+        keys.r.pressed = true
+        break
         case ' ':
         projectiles.push(new Projectile({
-    position: {
+        position: {
         x: player.position.x + player.width / 2,
         y: player.position.y
-    },
-    velocity: {
+        },
+        velocity: {
         x: 0,
-        y: -10
-    }
+        y: -12
+    },
+        cooldown: {
+        c: 0
+        }
 }))
-        break
+break
    }
 })
 
@@ -459,6 +485,12 @@ addEventListener('keyup', ({ key }) => {
         break
         case 'd':
         keys.d.pressed = false
+        break
+        case 'ArrowLeft':
+        keys.l.pressed = false
+        break
+        case 'ArrowRight':
+        keys.r.pressed = false
         break
         case ' ':
         break
