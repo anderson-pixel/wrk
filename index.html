@@ -8,6 +8,10 @@
     }
 
 </style>
+<p style="position: absolute; z-index: 10;
+     color: white;
+     left: 20px; top: 300px; 
+     margin: 0; font-family: sans-serif; font-size: 14px; word-break: break-word; max-width: 150px">A D / Arrow Keys for movement Spacebar For Shooting </p>
 
 <div style="position: relative">
     <p style="position: absolute; z-index: 10;
@@ -15,6 +19,9 @@
      left: 10px; top: 10px; 
      margin: 0; font-family: sans-serif; font-size: 14px;">
      <span>Score:</span> <span id="scoreEl">0</span></p>  
+      <div style="position: absolute; z-index: 10;" class="game-over">
+        <button style="position: relative; top: 320px; right: 150px" class="btn" onclick="window.location.reload()">Restart Game</button>
+      </div>
     <canvas></canvas>
 </div>
 <script src="./index.js"></script>

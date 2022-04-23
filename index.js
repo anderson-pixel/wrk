@@ -2,6 +2,7 @@ const canvas = document.querySelector('canvas')
 const scoreEl = document.querySelector('#scoreEl')
 const c = canvas.getContext('2d')
 
+
 canvas.width = 1024
 canvas.height = 576
 
@@ -57,14 +58,11 @@ class Player {
 }
 
 class Projectile {
-     constructor({position, velocity, cooldown}) {
+     constructor({position, velocity,}) {
         this.position = position
         this.velocity = velocity
-        this.cooldown = cooldown
-
         this.radius = 3
     }
-
     draw() {
         c.beginPath()
         c.arc(this.position.x, this.position.y, this.radius, 0, Math.PI * 2)
@@ -197,8 +195,8 @@ class Grid {
 
         this.invaders = []
 
-        const columns = Math.floor(Math.random() * 10 + 5)
-        const rows = Math.floor(Math.random() * 5 + 2)
+        const columns = Math.floor(Math.random() * 8 + 6)
+        const rows = Math.floor(Math.random() * 3 + 3)
 
         this.width = columns * 30
 
@@ -363,7 +361,7 @@ function animate() {
         grid.update()
 
         // spawn Projectiles 
-        if (frames % 80 === 0 && grid.invaders.length > 0) {
+        if (frames % 70 === 0 && grid.invaders.length > 0) {
             grid.invaders[Math.floor(Math.random() * grid.invaders.length)].shoot(
                 invaderProjectiles
             )
@@ -435,13 +433,12 @@ function animate() {
 
     if (frames % randomInterval === 0) {
         grids.push(new Grid())
-        randomInterval = Math.floor(Math.random() * 500 + 500)
+        randomInterval = Math.floor(Math.random() * 400 + 400)
         frames = 0
     }
 
     frames++
 }
-
 
 animate()
 
@@ -468,11 +465,8 @@ addEventListener('keydown', ({ key }) => {
         },
         velocity: {
         x: 0,
-        y: -12
+        y: -11
     },
-        cooldown: {
-        c: 0
-        }
 }))
 break
    }
@@ -496,3 +490,7 @@ addEventListener('keyup', ({ key }) => {
         break
    }
 })
+
+if (game.active = true) {
+    document.querySelector(".game-over").style.display = "block";
+}
