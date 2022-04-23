@@ -9,18 +9,18 @@
 
 </style>
 <p style="position: absolute; z-index: 10;
-     color: white;
+     color: slateblue;
      left: 20px; top: 300px; 
-     margin: 0; font-family: sans-serif; font-size: 14px; word-break: break-word; max-width: 150px">A D / Arrow Keys for movement Spacebar For Shooting </p>
+     margin: 0; font-family: sans-serif; font-size: 14px; word-break: break-word; max-width: 150px">A D / Arrow Keys for movement, Press Spacebar For Shooting </p>
 
 <div style="position: relative">
     <p style="position: absolute; z-index: 10;
      color: white; 
      left: 10px; top: 10px; 
      margin: 0; font-family: sans-serif; font-size: 14px;">
-     <span>Score:</span> <span id="scoreEl">0</span></p>  
+     <span style="color: slateblue;">Score:</span> <span style="color: slateblue;" id="scoreEl">0</span></p>  
       <div style="position: absolute; z-index: 10;" class="game-over">
-        <button style="position: relative; top: 320px; right: 150px" class="btn" onclick="window.location.reload()">Restart Game</button>
+        <button style="cursor: pointer; border: 1px solid slateblue; color: slateblue; background: transparent;position: relative; top: 320px; right: 150px" class="btn" onclick="window.location.reload()">Restart Game</button>
       </div>
     <canvas></canvas>
 </div>

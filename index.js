@@ -337,7 +337,7 @@ function animate() {
 
             setTimeout(() => {
                 game.active = false
-            }, 2000)
+            }, 900)
 
              createParticles({
             object: player,
@@ -443,6 +443,8 @@ function animate() {
 animate()
 
 addEventListener('keydown', ({ key }) => {
+
+     if (game.over) return
 
    switch (key) {
        case 'a':
