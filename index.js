@@ -195,7 +195,7 @@ class Grid {
 
         this.invaders = []
 
-        const columns = Math.floor(Math.random() * 8 + 6)
+        const columns = Math.floor(Math.random() * 6 + 6)
         const rows = Math.floor(Math.random() * 3 + 3)
 
         this.width = columns * 30
@@ -325,9 +325,10 @@ function animate() {
             }, 0)
         } else invaderProjectile.update()
 
-        if (invaderProjectile.position.y + invaderProjectile.height >= player.position.y && invaderProjectile.position.x + invaderProjectile.width >= player.position.x && invaderProjectile.position.x <= player.position.x + player.width) {
-
-            console.log('u lose')
+        if (invaderProjectile.position.y + invaderProjectile.height >= 
+            player.position.y && invaderProjectile.position.x + invaderProjectile.width >= 
+            player.position.x && invaderProjectile.position.x <= player.position.x + 
+            player.width) {
 
              setTimeout(() => {
                 invaderProjectiles.splice(index, 1)
@@ -361,7 +362,7 @@ function animate() {
         grid.update()
 
         // spawn Projectiles 
-        if (frames % 70 === 0 && grid.invaders.length > 0) {
+        if (frames % 38 === 0 && grid.invaders.length > 0) {
             grid.invaders[Math.floor(Math.random() * grid.invaders.length)].shoot(
                 invaderProjectiles
             )
@@ -433,7 +434,7 @@ function animate() {
 
     if (frames % randomInterval === 0) {
         grids.push(new Grid())
-        randomInterval = Math.floor(Math.random() * 400 + 400)
+        randomInterval = Math.floor(Math.random() * 490 + 490)
         frames = 0
     }
 
@@ -460,17 +461,6 @@ addEventListener('keydown', ({ key }) => {
         keys.r.pressed = true
         break
         case ' ':
-        projectiles.push(new Projectile({
-        position: {
-        x: player.position.x + player.width / 2,
-        y: player.position.y
-        },
-        velocity: {
-        x: 0,
-        y: -11
-    },
-}))
-break
    }
 })
 
@@ -488,10 +478,29 @@ addEventListener('keyup', ({ key }) => {
         case 'ArrowRight':
         keys.r.pressed = false
         break
-        case ' ':
-        break
    }
 })
+
+document.body.onkeyup = function(e) {
+
+     if (game.over) return
+
+  if (e.key == " " ||
+      e.code == "Space" ||      
+      e.keyCode == 32      
+  ) {
+projectiles.push(new Projectile({
+        position: {
+        x: player.position.x + player.width / 2,
+        y: player.position.y
+        },
+        velocity: {
+        x: 0,
+        y: -12
+    },
+    }))
+  }
+}
 
 if (game.active = true) {
     document.querySelector(".game-over").style.display = "block";
