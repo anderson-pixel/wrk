@@ -1,6 +1,9 @@
-const canvas = document.querySelector('canvas')
-const scoreEl = document.querySelector('#scoreEl')
-const c = canvas.getContext('2d')
+const canvas = document.querySelector('canvas');
+const scoreEl = document.querySelector('#scoreEl');
+const scoreEl2 = document.querySelector('#scoreEl2');
+const c = canvas.getContext('2d');
+const modal = document.querySelector('#modal');
+const closeModal = document.querySelector('.close-button');
 
 
 canvas.width = 1024
@@ -260,6 +263,7 @@ let game = {
     active: true
 }
 let score = 0
+let score2 = 0
 
  for (let i = 0; i < 100; i++) {
         particles.push(new Particle({
@@ -338,6 +342,7 @@ function animate() {
 
             setTimeout(() => {
                 game.active = false
+                modal.show()
             }, 900)
 
              createParticles({
@@ -389,7 +394,9 @@ function animate() {
 
                         if (invaderFound && projectileFound) {
                         score += 100
+                        score2 += 100
                         scoreEl.innerHTML = score
+                        scoreEl2.innerHTML = score2
                         createParticles({
                             object: invader,
                             fades: true
@@ -502,6 +509,7 @@ projectiles.push(new Projectile({
   }
 }
 
-if (game.active = true) {
-    document.querySelector(".game-over").style.display = "block";
-}
+
+closeModal.addEventListener("click", () => {
+    modal.close();
+})

@@ -1,3 +1,6 @@
+<head>
+  <link rel="stylesheet" href="app.css">
+</head>
 <style>
     body {
         margin: 0;
@@ -5,13 +8,6 @@
         justify-content: center;
         align-items: center;
         background-color: black;
-    }
-    button {
-      transition: 0.5s all ease-in-out;
-    }
-    button:hover {
-      width: 130px;
-      height: 25px;
     }
 
 </style>
@@ -21,13 +17,19 @@
      margin: 0; font-family: sans-serif; font-size: 14px; word-break: break-word; max-width: 150px">A D / Arrow Keys for Movement, Press Spacebar For Shooting </p>
 
 <div style="position: relative">
+  <dialog class="modal" id="modal">
+        <h2 style="margin-left: 70px">GAME OVER</h2>
+        <p style="margin-left: 60px">Oops, Looks like you've lost</p>
+        <p style="margin-left: 60px">Your High Score Was: <span id="scoreEl2">0</span></p>
+        <button style="margin-left: 105px" class="button close-button"  onclick="window.location.reload()">Try Again</button>
+      </dialog>
+
     <p style="position: absolute; z-index: 10;
      color: white; 
      left: 10px; top: 10px; 
      margin: 0; font-family: sans-serif; font-size: 14px;">
-     <span style="color: slateblue;">Score:</span> <span style="color: slateblue;" id="scoreEl">0</span></p>  
+     <span style="color: slateblue;">Score:</span><span style="color: slateblue;" id="scoreEl">0</span></p>  
       <div style="position: absolute; z-index: 10;" class="game-over">
-        <button style="cursor: pointer; border: 1px solid slateblue; color: slateblue; background: transparent;position: relative; top: 320px; right: 150px" class="btn" onclick="window.location.reload()">Restart Game</button>
       </div>
     <canvas></canvas>
 </div>

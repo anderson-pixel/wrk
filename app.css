@@ -1,0 +1,14 @@
+.modal {
+    background: black;
+    color: slateblue;
+    margin-top: 175px;
+    border: 1.5px solid slateblue;
+    width: 300px;
+}
+.button{
+    background: transparent;
+    color: slateblue;
+    border: 1px solid slateblue;
+    cursor: pointer;
+    outline: none;
+}
