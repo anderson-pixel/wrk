@@ -1,5 +1,5 @@
-<html translate="no"></html>
 <head>
+  <html lang="en">
   <meta name="google" content="notranslate">
   <link rel="stylesheet" href="app.css">
   <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
@@ -15,25 +15,25 @@
 
 </style>
 <p style="position: absolute; z-index: 10;
-     color: slateblue;
+     color: cyan;
      left: 20px; top: 300px; 
      margin: 0; font-size: 14.5px; word-break: break-word; max-width: 150px">A D / Arrow Keys for Movement, Press Spacebar For Shooting</p>
 
 <div style="position: relative">
   <dialog class="modal" id="modal">
         <h2 style="margin-left: 75px">GAME OVER</h2>
-        <p style="margin-left: 60px">Oops, Looks like you've lost</p>
-        <p style="margin-left: 65px">Your High Score Was: <span id="scoreEl2">0</span></p>
-        <button style="margin-left: 110px" class="button close-button"  onclick="window.location.reload()">Try Again</button>
+        <p style="margin-left: 87px">Your Score Was: <span id="scoreEl2">0</span></p>
+        <button style="margin-left: 115px" class="button close-button"  onclick="window.location.reload()">Try Again</button>
       </dialog>
 
     <p style="position: absolute; z-index: 10;
      color: white; 
      left: 10px; top: 10px; 
      margin: 0; font-family: sans-serif; font-size: 14px;">
-     <span style="color: slateblue;">Score:</span><span style="color: slateblue;" id="scoreEl">0</span></p>  
+     <span style="color: cyan;">Score:</span><span style="color: cyan;" id="scoreEl">0</span></p>  
       <div style="position: absolute; z-index: 10;" class="game-over">
       </div>
     <canvas></canvas>
 </div>
 <script src="./index.js"></script>
+</html>

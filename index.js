@@ -21,13 +21,13 @@ class Player {
         this.opacity = 1
 
         const image = new Image()
-        image.src = './img/playerShip1_blue.png'
+        image.src = './img/spaceshipsprite.png'
 
         document.addEventListener("keydown",this.keydown);
         document.addEventListener("keyup",this.keyup);
 
         image.onload = () => {
-          const scale = 0.40
+          const scale = 0.07
           this.image = image
           this.width = image.width * scale
           this.height = image.height * scale
@@ -496,7 +496,8 @@ document.body.onkeyup = function(e) {
       e.code == "Space" ||      
       e.keyCode == 32      
   ) {
-projectiles.push(new Projectile({
+      
+    projectiles.push(new Projectile({
         position: {
         x: player.position.x + player.width / 2,
         y: player.position.y

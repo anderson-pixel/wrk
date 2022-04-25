@@ -1,15 +1,15 @@
 
 .modal {
     background: black;
-    color: slateblue;
+    color: #d21404;
     margin-top: 175px;
-    border: 1.5px solid slateblue;
+    border: 1px solid #d21404;
     width: 300px;
 }
 .button{
     background: transparent;
-    color: slateblue;
-    border: 1px solid slateblue;
+    color: #d21404;
+    border: 1px solid #d21404;
     cursor: pointer;
     outline: none;
 }
